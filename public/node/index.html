@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AETHER — Node</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="node.css">
+</head>
+<body>
+  <div class="scan"></div>
+  <main id="app" class="offline">
+
+    <header class="topline">
+      <span class="brand">AETHER</span>
+      <span id="connState" class="pill">CONNECTING</span>
+    </header>
+
+    <section class="idBlock">
+      <div id="nodeId" class="nodeId">— — —</div>
+      <div id="nodeStatus" class="statusText">AWAITING LINK</div>
+    </section>
+
+    <section class="ring">
+      <svg viewBox="0 0 200 200" class="ringSvg" aria-hidden="true">
+        <circle cx="100" cy="100" r="88" class="ringTrack"/>
+        <circle id="energyRing" cx="100" cy="100" r="88" class="ringFill"/>
+      </svg>
+      <div class="ringLabel">
+        <div id="energyValue" class="energyValue">0%</div>
+        <div class="energyCaption">ENERGY</div>
+      </div>
+    </section>
+
+    <section class="meters">
+      <div class="meter">
+        <span class="meterLabel">SIGNAL</span>
+        <div class="meterBar"><div id="signalBar" class="meterFill"></div></div>
+      </div>
+    </section>
+
+    <section id="eventBanner" class="eventBanner" aria-live="polite"></section>
+
+    <footer class="footline">
+      <span id="footSession">—</span>
+    </footer>
+  </main>
+
+  <script src="/shared/constants.js"></script>
+  <script src="node.js"></script>
+</body>
+</html>

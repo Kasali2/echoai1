@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AETHER — Controller</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="controller.css">
+</head>
+<body>
+
+  <!-- Token gate: shown until a valid controller token is accepted -->
+  <div id="gate" class="gate">
+    <div class="gateCard">
+      <div class="gateTitle">AETHER CONTROLLER</div>
+      <div class="gateHint">Enter the controller token shown in the server console / landing page.</div>
+      <input id="tokenInput" class="tokenInput" autocomplete="off" spellcheck="false" placeholder="CONTROLLER TOKEN">
+      <button id="tokenSubmit" class="primary">CONNECT</button>
+      <div id="gateError" class="gateError"></div>
+    </div>
+  </div>
+
+  <main id="app" class="hidden">
+    <header class="topbar">
+      <span class="brand">AETHER</span>
+      <span id="connState" class="pill">LINKING</span>
+      <span id="modeState" class="pill">GESTURE</span>
+      <span id="controlModeState" class="pill">SINGLE</span>
+      <button id="demoToggle" class="chip">DEMO MODE</button>
+    </header>
+
+    <section id="cameraPanel" class="cameraPanel">
+      <video id="cam" playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div class="camStatus">
+        <span id="handStatus" class="pill off">HANDS: 0</span>
+        <span id="gestureStatus" class="pill">—</span>
+      </div>
+    </section>
+
+    <section class="voicePanel">
+      <div class="voiceRow">
+        <span id="micState" class="pill off">MIC OFF</span>
+        <button id="micToggle" class="chip">TOGGLE VOICE</button>
+      </div>
+      <div class="voiceField"><span class="voiceLabel">TRANSCRIPT</span><span id="voiceTranscript">—</span></div>
+      <div class="voiceField"><span class="voiceLabel">COMMAND</span><span id="voiceCommand">—</span></div>
+      <div class="voiceField"><span class="voiceLabel">TARGET</span><span id="voiceTarget">—</span></div>
+      <div class="voiceField"><span class="voiceLabel">STATUS</span><span id="voiceStatus">—</span></div>
+    </section>
+
+    <section id="touchPanel" class="touchPanel">
+      <div class="nodeGrid" id="nodeGrid"></div>
+
+      <div class="actionGrid">
+        <button data-action="freeze">FREEZE</button>
+        <button data-action="resume">RESUME</button>
+        <button data-action="charge">CHARGE</button>
+        <button data-action="launch_pulse">LAUNCH</button>
+        <button data-action="orbit_start">ORBIT</button>
+        <button data-action="orbit_stop">STOP ORBIT</button>
+        <button data-action="expand_field">EXPAND</button>
+        <button data-action="compress_field">COMPRESS</button>
+        <button data-action="increase_power">POWER +</button>
+        <button data-action="decrease_power">POWER −</button>
+        <button data-action="select_all">SELECT ALL</button>
+        <button data-action="deselect_all">CLEAR SEL.</button>
+        <button data-action="activate_reactor" class="primary">ACTIVATE</button>
+        <button data-action="shutdown">SHUTDOWN</button>
+      </div>
+
+      <button id="resetBtn" class="resetBtn">RESET AETHER</button>
+    </section>
+
+    <div id="debug" class="debug hidden">
+      <div>CAMERA <span id="dbgCam">—</span></div>
+      <div>HAND TRACKING <span id="dbgTracking">—</span></div>
+      <div>MIC <span id="dbgMic">—</span></div>
+      <div>SPEECH <span id="dbgSpeech">—</span></div>
+      <div>WS <span id="dbgWs">—</span></div>
+      <div>SELECTED <span id="dbgTarget">—</span></div>
+      <div>MODE <span id="dbgMode">—</span></div>
+      <div>LAST GESTURE <span id="dbgGesture">—</span></div>
+      <div>LAST TRANSCRIPT <span id="dbgTranscript">—</span></div>
+      <div>PARSED <span id="dbgParsed">—</span></div>
+    </div>
+  </main>
+
+  <script src="/shared/constants.js"></script>
+  <script src="/shared/audio.js"></script>
+  <script type="module" src="controller.js"></script>
+</body>
+</html>

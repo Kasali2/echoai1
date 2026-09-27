@@ -1,0 +1,85 @@
+html, body { overflow: hidden; }
+body::before { display: none; } /* the 3D grid replaces the flat CSS grid here */
+
+#scene {
+  position: fixed;
+  inset: 0;
+  display: block;
+}
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg-0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .9s ease;
+}
+.boot.hide { opacity: 0; pointer-events: none; }
+
+.bootLines {
+  font-family: var(--mono);
+  font-size: clamp(.85rem, 1.6vw, 1.1rem);
+  color: var(--blue);
+  letter-spacing: .08em;
+  min-width: 340px;
+}
+.bootLines div { padding: .18em 0; opacity: 0; animation: lineIn .4s ease forwards; }
+.bootLines .ok { color: var(--good); }
+.bootLines .title { color: var(--amber); font-family: var(--display); font-size: 1.3em; letter-spacing: .2em; margin-bottom: .5em; }
+@keyframes lineIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.hud {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: calc(1rem + var(--safe-top)) 1.4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  pointer-events: none;
+}
+.hudTop { display: flex; align-items: center; gap: .8rem; }
+.brand { font-family: var(--display); letter-spacing: .35em; font-size: .85rem; color: var(--text-dim); }
+
+.eventTicker {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: .12em;
+  color: var(--amber);
+  min-height: 1.4em;
+  text-shadow: 0 0 12px rgba(226,152,79,.5);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.eventTicker.show { opacity: 1; }
+
+.debug {
+  position: fixed;
+  bottom: calc(1rem + var(--safe-bottom));
+  left: 1rem;
+  z-index: 10;
+  font-size: .68rem;
+  color: var(--text-dim);
+  background: rgba(14,17,22,.7);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: .6em .8em;
+  line-height: 1.6;
+}
+.debug span { color: var(--text); }
+.debug.hidden { display: none; }
+
+.muteBtn {
+  position: fixed;
+  bottom: calc(1rem + var(--safe-bottom));
+  right: 1rem;
+  z-index: 10;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  opacity: .55;
+}
+.muteBtn:hover { opacity: 1; }

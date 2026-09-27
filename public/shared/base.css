@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg-0: #07080a;
+  --bg-1: #0e1116;
+  --bg-2: #151a21;
+  --line: #1e2530;
+  --line-soft: #161b23;
+  --text: #dde4ea;
+  --text-dim: #7a8590;
+  --text-faint: #454e59;
+
+  /* AETHER's own identity: warm amber for energy/action, cool slate-blue for
+     signal/idle states. Deliberately not the generic neon-cyan/violet
+     "AI" palette. */
+  --amber: #e2984f;
+  --amber-dim: #7a5730;
+  --blue: #6fa8c9;
+  --blue-dim: #35505f;
+  --danger: #e3585a;
+  --good: #5fc98d;
+
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  height: 100%;
+  scroll-padding-top: var(--safe-top);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--mono);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* a faint fixed reference grid — the one recurring structural motif across
+   all three surfaces, standing in for "the same physical environment" */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: .35;
+  z-index: 0;
+}
+
+button {
+  font-family: var(--display);
+  background: var(--bg-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: .6em 1em;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  cursor: pointer;
+}
+button:active { transform: translateY(1px); }
+button.primary { border-color: var(--amber-dim); color: var(--amber); }
+button:disabled { opacity: .4; cursor: default; }
+
+.pill {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  padding: .3em .7em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-dim);
+}
+.pill.on { color: var(--good); border-color: var(--good); }
+.pill.warn { color: var(--amber); border-color: var(--amber-dim); }
+.pill.off { color: var(--danger); border-color: var(--danger); }
+
+::selection { background: var(--amber-dim); color: white; }

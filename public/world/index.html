@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AETHER — World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="world.css">
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div id="boot" class="boot">
+    <div class="bootLines" id="bootLines"></div>
+  </div>
+
+  <div id="hud" class="hud">
+    <div class="hudTop">
+      <span class="brand">AETHER</span>
+      <span id="connState" class="pill">LINKING</span>
+    </div>
+    <div id="eventTicker" class="eventTicker" aria-live="polite"></div>
+  </div>
+
+  <div id="debug" class="debug hidden">
+    <div>FPS <span id="dbgFps">—</span></div>
+    <div>WS <span id="dbgWs">—</span></div>
+    <div>NODES <span id="dbgNodes">—</span></div>
+    <div>CORE POWER <span id="dbgPower">—</span></div>
+    <div>LAST EVENT <span id="dbgEvent">—</span></div>
+  </div>
+
+  <button id="muteBtn" class="muteBtn" aria-label="Toggle sound">SOUND: ON</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="/shared/constants.js"></script>
+  <script src="/shared/audio.js"></script>
+  <script src="world.js"></script>
+</body>
+</html>
